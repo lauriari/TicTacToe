@@ -1,4 +1,4 @@
-package s21;
+package TicTacToe;
 
 
 public class Main {
