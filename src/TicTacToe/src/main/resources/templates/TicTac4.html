@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>TicTacToe</title>
+  <style>
+    .grid-container {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 10px;
+justify-items: center;
+align-content: center;
+width: fit-content;
+margin: auto;
+}
+
+    .button {
+font-size: 24px;
+font-weight: bold;
+margin: 3px;
+width: 60px;
+height: 60px;
+background-color: #4CAF50;
+color: white;
+border: none;
+cursor: pointer;
+transition: 0.3s;
+}
+    .button:hover {
+    background-color: #107170;
+    }
+  </style>
+</head>
+<body>
+<div class="grid-container">
+  <form action="/click" method="post">
+
+    <input type="hidden" name="buttonNumber" value="0" />
+    <button class="button" th:text="${__${'button0'}__.getText}" th:disabled="${!__${'button0'}__.isEnabled}"></button>
+  </form>
+
+    <form action="/click" method="post">
+    <input type="hidden" name="buttonNumber" value="1" />
+    <button class="button" th:text="${__${'button1'}__.getText}" th:disabled="${!__${'button1'}__.isEnabled}"></button>
+
+    </form>
+
+  <form action="/click" method="post">
+
+  <input type="hidden" name="buttonNumber" value="2" />
+    <button class="button" th:text="${__${'button2'}__.getText}" th:disabled="${!__${'button2'}__.isEnabled}"></button>
+
+  </form>
+  <form action="/click" method="post">
+
+    <input type="hidden" name="buttonNumber" value="3" />
+    <button class="button" th:text="${__${'button3'}__.getText}" th:disabled="${!__${'button3'}__.isEnabled}"></button>
+
+  </form>
+  <form action="/click" method="post">
+
+    <input type="hidden" name="buttonNumber" value="4" />
+    <button class="button" th:text="${__${'button4'}__.getText}" th:disabled="${!__${'button4'}__.isEnabled}"></button>
+
+  </form>
+  <form action="/click" method="post">
+
+    <input type="hidden" name="buttonNumber" value="5" />
+    <button class="button" th:text="${__${'button5'}__.getText}" th:disabled="${!__${'button5'}__.isEnabled}"></button>
+
+  </form>
+  <form action="/click" method="post">
+
+    <input type="hidden" name="buttonNumber" value="6" />
+    <button class="button" th:text="${__${'button6'}__.getText}" th:disabled="${!__${'button6'}__.isEnabled}"></button>
+
+  </form>
+  <form action="/click" method="post">
+
+    <input type="hidden" name="buttonNumber" value="7" />
+    <button class="button" th:text="${__${'button7'}__.getText}" th:disabled="${!__${'button7'}__.isEnabled}"></button>
+
+  </form>
+  <form action="/click" method="post">
+
+    <input type="hidden" name="buttonNumber" value="8" />
+    <button class="button" th:text="${__${'button8'}__.getText}" th:disabled="${!__${'button8'}__.isEnabled}"></button>
+
+  </form>
+
+
+
+
+</div>
+</body>
+</html>
+
+
+
+
+
+<!--<input type="hidden" name="buttonNumber" value="0" />-->
+<!--<button th:text="${__${'button0'}__.getText}" th:disabled="${!__${'button0'}__.isEnabled}"></button>-->
+<!--<input type="hidden" name="buttonNumber" value="1" />-->
+<!--<button th:text="${__${'button1'}__.getText}" th:disabled="${!__${'button1'}__.isEnabled}"></button>-->
+<!--<input type="hidden" name="buttonNumber" value="2" />-->
+<!--<button th:text="${__${'button2'}__.getText}" th:disabled="${!__${'button2'}__.isEnabled}"></button>-->
