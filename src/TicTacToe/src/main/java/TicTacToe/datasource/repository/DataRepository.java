@@ -2,8 +2,10 @@ package TicTacToe.datasource.repository;
 
 import TicTacToe.datasource.model.GameField;
 import TicTacToe.datasource.model.GamesCollection;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
+
 
 public class DataRepository {
     private final GamesCollection games;

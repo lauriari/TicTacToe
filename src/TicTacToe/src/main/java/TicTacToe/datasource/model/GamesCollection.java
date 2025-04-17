@@ -1,5 +1,7 @@
 package TicTacToe.datasource.model;
 
+import org.springframework.stereotype.Component;
+
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 

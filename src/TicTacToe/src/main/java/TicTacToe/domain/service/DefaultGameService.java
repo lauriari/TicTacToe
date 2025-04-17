@@ -2,16 +2,19 @@ package TicTacToe.domain.service;
 
 import TicTacToe.datasource.mapper.GameMapper;
 import TicTacToe.datasource.repository.DataService;
+import TicTacToe.datasource.repository.IDataService;
 import TicTacToe.domain.model.GameBoard;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
+
 public class DefaultGameService implements GameService {
 
-    private DataService service;
+    private IDataService service;
     private GameMapper mapper;
 
-    public DefaultGameService(DataService service, GameMapper mapper) {
+    public DefaultGameService(IDataService service, GameMapper mapper) {
         this.service = service;
         this.mapper = mapper;
     }
@@ -34,6 +37,13 @@ public class DefaultGameService implements GameService {
     public void saveGame(UUID uuid, GameBoard gameBoard) {
         this.save(uuid, gameBoard);
     }
+
+    @Override
+    public GameBoard loadGame(UUID uuid) {
+        return this.load(uuid);
+    }
+
+
 
     private int recurs(GameBoard game, int player, int depth){
         int sign = player == 1 ? 1 : -1;
@@ -101,19 +111,14 @@ public class DefaultGameService implements GameService {
 
 
     @Override
-    public void validGame(UUID uuid, GameBoard newMove) throws IllegalAccessError {
+    public void validGame(UUID uuid, int curMove) throws IllegalAccessError {
         GameBoard oldGame = this.load(uuid);
-        int move = 0;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (oldGame.getBoard(i, j) == 0 && newMove.getBoard(i, j) != 0) {
-                    move++;
-                }
-            }
-        }
-        if (move != 1) {
+        if (oldGame.getBoard(curMove % 3, curMove / 3) != 0) {
             throw new IllegalAccessError("bad game");
+        } else {
+            oldGame.setBoard(curMove % 3, curMove / 3, 1);
         }
+        this.save(uuid, oldGame);
     }
 
     @Override

@@ -3,6 +3,7 @@ package TicTacToe.datasource.repository;
 import TicTacToe.datasource.mapper.GameMapper;
 import TicTacToe.datasource.model.GameField;
 import TicTacToe.domain.model.GameBoard;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 

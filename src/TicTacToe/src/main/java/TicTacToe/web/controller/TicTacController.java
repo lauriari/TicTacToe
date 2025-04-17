@@ -8,6 +8,8 @@ import TicTacToe.domain.service.DefaultGameService;
 import TicTacToe.domain.service.PlayGame;
 import TicTacToe.web.mapper.Adapter;
 import TicTacToe.web.model.Button;
+import TicTacToe.web.model.Button2;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,18 +22,30 @@ import java.util.UUID;
 public class TicTacController {
 
     private Button[] button = new Button[9];
+    private Button2 yourMove;
 
-    private PlayGame playGame = new PlayGame(new DefaultGameService(new DataService(new DataRepository()), new DefaultGameMapper()));
-    UUID uuid;
+    private PlayGame playGame = new PlayGame(new DefaultGameService(new DataService(new DataRepository()), new DefaultGameMapper()));;
+
+//    public TicTacController(PlayGame playGame){
+//      //  this.playGame = playGame;
+//
+//        this.playGame = new PlayGame(new DefaultGameService(new DataService(new DataRepository()), new DefaultGameMapper()));
+//    }
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, HttpSession session) {
         for (int i = 0; i < 9; i++){
             button[i] = new Button();
         }
-        uuid = playGame.createNewGame();
+
+        UUID uuid = playGame.createNewGame();
+        model.addAttribute("curUUID", uuid.toString());
+        session.setAttribute("curUUID", uuid.toString());
+
         System.out.println("uuid - " + uuid);
         Adapter.boardToButton(new GameBoard(), button);
+        yourMove = new Button2("your move first", true);
+        model.addAttribute("yourMove", yourMove);
         for (int i = 0; i < 9; i++) {
             model.addAttribute("button" + i, button[i]);
         }
@@ -41,19 +55,38 @@ public class TicTacController {
     @PostMapping("/click")
     public String handleClick(
             @RequestParam("buttonNumber") String buttonNumber,
+            @RequestParam("uuid") UUID uuid,
+            HttpSession session,
             Model model) {
 
-        button[Integer.parseInt(buttonNumber)].setText("X");
 
-        GameBoard newMoveGameBoard = new GameBoard();
+            yourMove.setText(" ");
+            yourMove.setEnabled(false);
 
-        Adapter.buttonToBoard(button, newMoveGameBoard);
+            GameBoard newMoveGameBoard;
 
+      if (buttonNumber.equals("9")) {
+          newMoveGameBoard = playGame.comp1stMove(uuid);
+          Adapter.boardToButton(newMoveGameBoard, button);
+      }
+      else {
+          newMoveGameBoard = playGame.myMoveAndCompMove(uuid, Integer.parseInt(buttonNumber));
+          Adapter.boardToButton(newMoveGameBoard, button);
+          if (playGame.getStatus() != 0){
+              for (int i = 0; i < 9; i++){
+                  button[i].setEnabled(false);
+              }
+              if (playGame.getStatus() == 1){
+                  yourMove.setText("You WIN");
+              } else {
+                  yourMove.setText("You LOOSE");
+              }
+              yourMove.setEnabled(false);
+          }
+      }
 
-        newMoveGameBoard = playGame.myMoveAndCompMove(uuid, newMoveGameBoard);
-
-        Adapter.boardToButton(newMoveGameBoard, button);
-
+        model.addAttribute("curUUID", uuid);
+        model.addAttribute("yourMove", yourMove);
         for (int i = 0; i < 9; i++) {
             model.addAttribute("button" + i, button[i]);
         }

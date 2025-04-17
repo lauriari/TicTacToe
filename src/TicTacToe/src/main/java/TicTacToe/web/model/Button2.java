@@ -1,15 +1,12 @@
 package TicTacToe.web.model;
 
-public class Button {
+public class Button2 {
     private String text;
     private boolean enabled;
 
-    public Button() {
-    }
-
-    public Button(String text) {
+    public Button2(String text, boolean f) {
         this.text = text;
-        this.enabled = text.equals(" ") ? true : false;
+        this.enabled = f;
     }
 
     public String getText() {
@@ -18,14 +15,11 @@ public class Button {
 
     public void setText(String text) {
         this.text = text;
-        this.enabled = text.equals(" ") ? true : false;
     }
     public void setEnabled(boolean f){
         this.enabled = f;
     }
-
     public boolean isEnabled() {
         return enabled;
     }
-
 }

@@ -8,7 +8,8 @@ public interface GameService {
     UUID createNewGame();
 
     void saveGame(UUID uuid, GameBoard gameBoard);
+    GameBoard loadGame(UUID uuid);
     GameBoard nextMove(UUID uuid);
-    void validGame(UUID uuid, GameBoard newMove);
+    void validGame(UUID uuid, int curMove);
     boolean finishGame(GameBoard game);
 }
