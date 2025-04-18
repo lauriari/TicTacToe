@@ -34,63 +34,63 @@ transition: 0.3s;
 <body>
 <!--<p>Твой UUID: <span th:text="${curUUID}"></span></p>-->
 <div class="grid-container">
-  <form action="/click" method="post">
+  <form action="/game" method="post">
     <input type="hidden" name="buttonNumber" value="0" />
     <input type="hidden" name="uuid" th:value="${curUUID}" />
 
     <button class="button" th:text="${__${'button0'}__.getText}" th:disabled="${!__${'button0'}__.isEnabled}"></button>
   </form>
 
-    <form action="/click" method="post">
+    <form action="/game" method="post">
     <input type="hidden" name="buttonNumber" value="1" />
       <input type="hidden" name="uuid" th:value="${curUUID}" />
     <button class="button" th:text="${__${'button1'}__.getText}" th:disabled="${!__${'button1'}__.isEnabled}"></button>
 
     </form>
 
-  <form action="/click" method="post">
+  <form action="/game" method="post">
 
   <input type="hidden" name="buttonNumber" value="2" />
     <input type="hidden" name="uuid" th:value="${curUUID}" />
     <button class="button" th:text="${__${'button2'}__.getText}" th:disabled="${!__${'button2'}__.isEnabled}"></button>
 
   </form>
-  <form action="/click" method="post">
+  <form action="/game" method="post">
 
     <input type="hidden" name="buttonNumber" value="3" />
     <input type="hidden" name="uuid" th:value="${curUUID}" />
     <button class="button" th:text="${__${'button3'}__.getText}" th:disabled="${!__${'button3'}__.isEnabled}"></button>
 
   </form>
-  <form action="/click" method="post">
+  <form action="/game" method="post">
 
     <input type="hidden" name="buttonNumber" value="4" />
     <input type="hidden" name="uuid" th:value="${curUUID}" />
     <button class="button" th:text="${__${'button4'}__.getText}" th:disabled="${!__${'button4'}__.isEnabled}"></button>
 
   </form>
-  <form action="/click" method="post">
+  <form action="/game" method="post">
 
     <input type="hidden" name="buttonNumber" value="5" />
     <input type="hidden" name="uuid" th:value="${curUUID}" />
     <button class="button" th:text="${__${'button5'}__.getText}" th:disabled="${!__${'button5'}__.isEnabled}"></button>
 
   </form>
-  <form action="/click" method="post">
+  <form action="/game" method="post">
 
     <input type="hidden" name="buttonNumber" value="6" />
     <input type="hidden" name="uuid" th:value="${curUUID}" />
     <button class="button" th:text="${__${'button6'}__.getText}" th:disabled="${!__${'button6'}__.isEnabled}"></button>
 
   </form>
-  <form action="/click" method="post">
+  <form action="/game" method="post">
 
     <input type="hidden" name="buttonNumber" value="7" />
     <input type="hidden" name="uuid" th:value="${curUUID}" />
     <button class="button" th:text="${__${'button7'}__.getText}" th:disabled="${!__${'button7'}__.isEnabled}"></button>
 
   </form>
-  <form action="/click" method="post">
+  <form action="/game" method="post">
 
     <input type="hidden" name="buttonNumber" value="8" />
     <input type="hidden" name="uuid" th:value="${curUUID}" />
@@ -99,7 +99,7 @@ transition: 0.3s;
   </form>
 </div>
 <div style="display: flex; justify-content: center;">
-  <form action="/click" method="post">
+  <form action="/game" method="post">
     <input type="hidden" name="buttonNumber" value="9" />
     <input type="hidden" name="uuid" th:value="${curUUID}" />
     <button style="width: 180px; text-align: center;"

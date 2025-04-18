@@ -45,7 +45,7 @@ public class TicTacController {
         return "TicTac4";
     }
 
-    @PostMapping("/click")
+    @PostMapping("/game")
     public String handleClick(
             @RequestParam("buttonNumber") String buttonNumber,
             @RequestParam("uuid") UUID uuid,
