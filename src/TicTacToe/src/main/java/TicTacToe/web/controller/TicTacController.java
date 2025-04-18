@@ -1,15 +1,13 @@
 package TicTacToe.web.controller;
 
-import TicTacToe.datasource.mapper.DefaultGameMapper;
-import TicTacToe.datasource.repository.DataService;
-import TicTacToe.datasource.repository.DataRepository;
+
 import TicTacToe.domain.model.GameBoard;
-import TicTacToe.domain.service.DefaultGameService;
 import TicTacToe.domain.service.PlayGame;
 import TicTacToe.web.mapper.Adapter;
 import TicTacToe.web.model.Button;
 import TicTacToe.web.model.Button2;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,13 +22,8 @@ public class TicTacController {
     private Button[] button = new Button[9];
     private Button2 yourMove;
 
-    private PlayGame playGame = new PlayGame(new DefaultGameService(new DataService(new DataRepository()), new DefaultGameMapper()));;
-
-//    public TicTacController(PlayGame playGame){
-//      //  this.playGame = playGame;
-//
-//        this.playGame = new PlayGame(new DefaultGameService(new DataService(new DataRepository()), new DefaultGameMapper()));
-//    }
+  @Autowired
+  private PlayGame playGame;
 
     @GetMapping("/")
     public String index(Model model, HttpSession session) {

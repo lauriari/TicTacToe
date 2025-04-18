@@ -1,7 +1,6 @@
 package TicTacToe.domain.service;
 
 import TicTacToe.datasource.mapper.GameMapper;
-import TicTacToe.datasource.repository.DataService;
 import TicTacToe.datasource.repository.IDataService;
 import TicTacToe.domain.model.GameBoard;
 import org.springframework.stereotype.Component;
