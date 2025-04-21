@@ -33,7 +33,7 @@ public class PlayGame {
 
             GameBoard newGame = service.nextMove(uuid);
 
-            if (service.finishGame(newGame)){
+            if (service.finishGame(newGame) && status != 1){
                 status = 2;
 
             }

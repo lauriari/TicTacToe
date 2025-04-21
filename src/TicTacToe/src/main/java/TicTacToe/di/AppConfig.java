@@ -1,6 +1,7 @@
 package TicTacToe.di;
 
 import TicTacToe.datasource.mapper.DefaultGameMapper;
+import TicTacToe.datasource.model.GamesCollection;
 import TicTacToe.datasource.repository.DataRepository;
 import TicTacToe.datasource.repository.DataService;
 import TicTacToe.domain.service.DefaultGameService;
@@ -11,10 +12,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-
+    @Bean
+    public GamesCollection gamesCollection() {return new GamesCollection();}
     @Bean
     public DataRepository repository(){
-        return new DataRepository();
+        return new DataRepository(gamesCollection());
     }
 
     @Bean
